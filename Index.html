@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html>
+
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday My Love</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle, #351044, #100018);
+    font-family: cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+/* Heading */
+
+.heading {
+    font-size: 25px;
+    color: #ffb6d9;
+    text-shadow: 0 0 15px #ff1493;
+    opacity: 0;
+    animation: headingShow 2s forwards;
+}
+
+@keyframes headingShow {
+    to { opacity: 1; }
+}
+
+/* Cake Stage */
+
+.cake-area {
+    width: 300px;
+    height: 330px;
+    position: relative;
+    margin: 30px auto 0;
+}
+
+/* Cake Layers */
+
+.layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom;
+    border-radius: 12px 12px 8px 8px;
+    box-shadow: inset 0 -8px 0 rgba(0,0,0,0.12),
+                0 5px 15px rgba(255,100,180,0.2);
+}
+
+.bottom {
+    width: 230px;
+    height: 65px;
+    bottom: 15px;
+    background: linear-gradient(#ff80ab, #e91e63);
+    animation: build 1s ease-out 1s forwards;
+}
+
+.middle {
+    width: 190px;
+    height: 60px;
+    bottom: 80px;
+    background: linear-gradient(#ffd1e5, #ff69a6);
+    animation: build 1s ease-out 2.5s forwards;
+}
+
+.top {
+    width: 150px;
+    height: 55px;
+    bottom: 140px;
+    background: linear-gradient(#ffb6d9, #ff4081);
+    animation: build 1s ease-out 4s forwards;
+}
+
+@keyframes build {
+    0% {
+        transform: translateX(-50%) scaleY(0);
+    }
+    70% {
+        transform: translateX(-50%) scaleY(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+/* Cream Decoration */
+
+.cream {
+    position: absolute;
+    left: 50%;
+    bottom: 185px;
+    width: 150px;
+    height: 18px;
+    transform: translateX(-50%) scaleX(0);
+    background: #fff0f5;
+    border-radius: 50%;
+    animation: creamShow 1s ease 5s forwards;
+}
+
+@keyframes creamShow {
+    to { transform: translateX(-50%) scaleX(1); }
+}
+
+/* Cake Decorations */
+
+.dot {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff176;
+    opacity: 0;
+    animation: dotsShow 0.5s 5.5s forwards;
+}
+
+.d1 { bottom: 45px; left: 85px; }
+.d2 { bottom: 45px; left: 125px; }
+.d3 { bottom: 45px; left: 165px; }
+.d4 { bottom: 105px; left: 105px; }
+.d5 { bottom: 105px; left: 150px; }
+
+@keyframes dotsShow {
+    to { opacity: 1; }
+}
+
+/* Plate */
+
+.plate {
+    position: absolute;
+    width: 260px;
+    height: 15px;
+    background: linear-gradient(white, #aaa);
+    border-radius: 50%;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%) scaleX(0);
+    animation: plateShow 0.8s 0.5s forwards;
+}
+
+@keyframes plateShow {
+    to { transform: translateX(-50%) scaleX(1); }
+}
+
+/* Candle */
+
+.candle {
+    position: absolute;
+    width: 13px;
+    height: 48px;
+    left: 50%;
+    bottom: 195px;
+    margin-left: -6px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #fff 0px,
+        #fff 5px,
+        #ff4081 5px,
+        #ff4081 10px
+    );
+
+    border-radius: 4px;
+    opacity: 0;
+
+    transform: translateY(-280px) rotate(15deg);
+    animation: candleDrop 1.3s cubic-bezier(.2,.8,.3,1.3) 6s forwards;
+}
+
+@keyframes candleDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-280px) rotate(15deg);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(10px) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Flame */
+
+.flame {
+    position: absolute;
+    width: 18px;
+    height: 25px;
+    background: linear-gradient(#fff176, orange, #ff5722);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    top: -24px;
+    left: -2px;
+
+    opacity: 0;
+    animation:
+        lightUp 0.5s ease 7.5s forwards,
+        flicker 0.5s ease-in-out 8s infinite alternate;
+}
+
+@keyframes lightUp {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-45deg) scale(1);
+        box-shadow: 0 0 20px orange, 0 0 40px yellow;
+    }
+}
+
+@keyframes flicker {
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+    to {
+        transform: rotate(-45deg) scale(.8);
+    }
+}
+
+/* Birthday Text */
+
+.message {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffb6d9;
+    text-shadow: 0 0 10px #ff1493, 0 0 25px #ff1493;
+
+    opacity: 0;
+    transform: scale(0.2);
+
+    animation: messageShow 2s ease 8.5s forwards;
+}
+
+@keyframes messageShow {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Small Hearts */
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+    color: #ff69b4;
+    font-size: 25px;
+    animation: heartFly 6s linear infinite;
+}
+
+@keyframes heartFly {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Restart Button */
+
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 1px solid pink;
+    background: #e91e63;
+    color: white;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 15px pink;
+}
+
+button:hover {
+    background: #ff1493;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2 class="heading">A Little Surprise For You ❤️</h2>
+
+    <div class="cake-area">
+
+        <!-- Plate -->
+        <div class="plate"></div>
+
+        <!-- Cake Layers -->
+        <div class="layer bottom"></div>
+        <div class="layer middle"></div>
+        <div class="layer top"></div>
+
+        <!-- Cream -->
+        <div class="cream"></div>
+
+        <!-- Cake Decoration -->
+        <div class="dot d1"></div>
+        <div class="dot d2"></div>
+        <div class="dot d3"></div>
+        <div class="dot d4"></div>
+        <div class="dot d5"></div>
+
+        <!-- Candle -->
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+    </div>
+
+    <!-- Birthday Message -->
+    <div class="message">
+        Happy Birthday<br>
+        My Love ❤️
+    </div>
+
+    <button onclick="location.reload()">
+        🔄 Replay Animation
+    </button>
+
+</div>
+
+<script>
+
+// Floating hearts animation
+function createHeart() {
+
+    let heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 600);
+
+</script>
+
+</body>
+</html>
